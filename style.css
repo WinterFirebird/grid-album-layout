@@ -1,0 +1,180 @@
+@font-face {
+    font-family: MavenPro;
+    src: url(fonts/Maven_Pro/MavenPro-VariableFont_wght.ttf);
+}
+
+
+:root {
+    --background-gradient:linear-gradient(45deg, darkmagenta, darkorchid, darkslateblue);
+    --color:white;
+    --font-family:MavenPro, sans-serif;
+    /**/
+    --container-margin:80px;
+    /**/
+    --album-item-min-width:350px;
+    --album-item-flex-direction:row;
+}
+
+* {
+    box-sizing:border-box;
+}
+
+html {
+    /* height:100vh; */
+    margin:0; padding:0;
+}
+
+body {
+    /* height:100%; */
+    margin:0;
+    font-family:var(--font-family);
+    background-image:var(--background-gradient);
+    background-attachment: fixed;
+}
+
+/* header*/
+
+header {
+    padding-left: var(--container-margin);
+    padding-right: var(--container-margin);
+    color:var(--color);
+}
+
+header a {
+    color:var(--color);
+}
+
+/* album container */
+
+.album-container {
+    margin:var(--container-margin);
+    color:var(--color);
+    /**/
+    display:grid;
+    grid-gap:20px;
+    grid-template-columns:repeat(auto-fit, minmax(var(--album-item-min-width), 1fr));
+    grid-auto-rows:minmax(auto, 1fr);
+    grid-auto-flow: dense;
+}
+
+.album-container > .item {
+    color:var(--color);
+    text-decoration: none;
+    /**/
+    background-color:rgba(240, 248, 255, 0.3);
+    box-shadow:4px 4px 3px 3px rgba(256, 256, 256, .5);
+    padding:20px;
+    /**/
+    display:flex;
+    flex-direction:var(--album-item-flex-direction);
+    align-items:center;
+    justify-content:center;
+}
+
+.album-container > .item > img {
+    object-fit: cover;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow:2px 3px 2px 2px rgba(240, 248, 255, 0.3);
+    /**/
+    flex-shrink:0;
+} 
+
+
+/*--featured item styling*/ 
+
+.album-container > .featured {
+    text-align:center;
+    /**/
+    grid-row:span 2;
+}
+
+.album-container > .featured img {
+    width: 200px;
+    height: 300px;
+}
+
+.album-container > .featured h2 {
+    font-size:1.2rem;
+}
+
+.album-container > .featured h3, .container > .featured p {
+    font-size:1rem;
+}
+
+
+/*Photos container*/
+
+.photos-container {
+    margin:var(--container-margin);
+    color:var(--color);
+    /**/
+    display:grid;
+    grid-gap:10px;
+    grid-auto-flow:column dense;
+    grid-template-rows: repeat(2, minmax(150px, 30vh));
+    grid-auto-rows:200px;
+    grid-auto-columns: 150px;
+    /* align-items:center;
+    justify-items:center; */ /* Causes problems with small images*/
+    /**/
+    overflow-x:scroll;
+    overflow-y:hidden;/*unfortunately, horizontal scrollbar causes also a vertical one, which I can't solve the right way, so I just made it hiddden.
+    However, this doesn't come fron nowhere. Some of the vertical content is under the horizontal scrollbar, so I have to give the container some padding, to "solve" it.*/
+    padding-bottom:15px;
+}
+
+.photos-container > .item {
+    
+}
+
+.photos-container > .item:nth-child(6n+1) {
+    grid-row:span 2;
+}
+
+.photos-container > .item:nth-child(8n+2) {
+    grid-column:span 2;
+}
+
+.photos-container > .item:nth-child(9n+3) {
+    grid-column:span 2;
+    grid-row:span 2;
+}
+
+
+.photos-container > .item img {
+    border:2px solid var(--color);
+    /**/
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/**/
+h1, h2, h3, p {
+    padding-left:7px;
+    padding-right:7px;
+}
+
+h2 {
+    font-size:.9rem;
+    margin-top:0;
+}
+
+h3, p {
+    font-size:.7rem;
+}
+
+
+@media screen and (max-width:480px) {
+    :root {
+        --container-margin:20px;
+        --album-item-min-width:88vw;
+        --album-item-flex-direction:column;
+        text-align:center;
+    }
+
+    .container > .item > .album-body {
+        margin-top:10px;
+    }
+}
