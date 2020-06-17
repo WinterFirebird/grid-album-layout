@@ -135,12 +135,15 @@ header a {
 }
 
 .photos-modal img {
-    border:1px solid var(--color);
     max-width: 85vw;
     max-height: 85vh;
     position: absolute;
     top:0;right:0;bottom:0;left:0;
     margin:auto;
+}
+
+.photos-modal img.ready {
+    border:1px solid var(--color);
 }
 
 .photos-container {
@@ -163,6 +166,7 @@ header a {
 
 .photos-container > .item {
     border:2px solid var(--color);
+    cursor: zoom-in;
 }
 
 .photos-container > .item img {

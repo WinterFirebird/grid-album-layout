@@ -104,16 +104,22 @@ window.onload = function() {
      * estimates the source of the high-res version, dynamically creates a new image and append it to the modal, then displays it 
      */
     const goToFullscreen = (target) => {
+        /*add the loading*/
+        imageWrapper.innerHTML = "<img src='images/media/loading.gif' />";
+
         /**store the predicted src of the high-res image from the src of the normal one*/
         let highResSubstitute = `images/high-res/${target.getAttribute("src").substring(7)}`;
 
         /**create the high-res image to display in fullscreen*/
         let highResImg = document.createElement("img");
+        /*don't append it to the wrapper till it's loaded*/
+        highResImg.addEventListener("load", function() {
+            /*clear the imageWrapper (from previous images) and append the created high-res image to it*/
+            imageWrapper.innerHTML = "";
+            imageWrapper.appendChild(highResImg);
+            highResImg.classList.add("ready");
+        })
         highResImg.src=highResSubstitute;
-
-        /*clear the imageWrapper (from previous images) and append the created high-res image to it*/
-        imageWrapper.innerHTML = "";
-        imageWrapper.appendChild(highResImg);
 
         /*display the modal*/
         photosModal.style.display = "";
