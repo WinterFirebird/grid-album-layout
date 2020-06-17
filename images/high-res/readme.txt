@@ -1,0 +1,1 @@
+when adding or deleting any eligible image (ed est starting with "image", followed by consecutive integers, and having the "jpg" file format) change the total number of photos in main.js, in order to avoid errors.

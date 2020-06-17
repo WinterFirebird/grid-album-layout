@@ -8,11 +8,23 @@ window.onload = function() {
      * number of image samples in the images folder
      */
     const sampleNumbers = 30;
+
     /**
      * the album container,
      * a grid container
      */
     const photosContainer = document.querySelector(".photos-container");
+
+    /**
+     *  number of columns in the grid
+     */
+    const gridColumns = 4;
+
+    /**
+     * 
+     * number of rows in the grid
+     */
+    const gridRows = 4;
 
     /**
      * returns the natural dimensions of the image, not working properly when the image isn't loaded  
@@ -28,7 +40,6 @@ window.onload = function() {
          * the dimensions of the image as an array, width first, then height
          */
         let dimensions = [width, height];
-        // console.log(dimensions)
         return dimensions;
     }
     
@@ -36,7 +47,6 @@ window.onload = function() {
      * calculates the aspect ratio and sets the number of grid rows and columns  
      */
     const getAspectRatioEstimate = ([width, height]) => {
-        // console.log(width, height)
         let rows;
         let columns;
         let ratio = width / height;
@@ -57,13 +67,20 @@ window.onload = function() {
             rows = Math.round(1 / ratio);
         }
 
+        /*in case the num. of rows/columns calculated by this func. exceeds the num. of grid rows/columns specified by CSS, might happen with ultra-narrow/wide images*/
+        if (rows > gridRows || columns > gridColumns) {
+            if (rows > columns) {
+                rows = gridRows;
+            } else {
+                columns = gridColumns;
+            }
+        }
+
         /**
          * the calculated number of grid rows and columns as an array, first rows then columns
          */
         let gridLayout = [rows, columns];
 
-        // console.log(`width: ${width}, height: ${height}, ratio: ${ratio}`);
-        // console.log(gridLayout);
         return gridLayout
     }
 
