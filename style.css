@@ -108,17 +108,39 @@ header a {
 
 /*modal for viewing the photos in full size*/
 .photos-modal {
-    border: 2px solid red;
-    background-color: white;
+    background-color: rgba(0,0,0,0.9);
     /**/
-    position: absolute;
+    position: fixed;
+    overflow:hidden;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    padding: 5% 20%;
+    /* padding: 5% 20%;
     background-origin: content-box;
-    background-clip: content-box;
+    background-clip: content-box; */
+}
+
+.photos-modal > .close-button {
+    color:var(--color);
+    background:none;
+    border:none;
+    outline:none;
+    font-size: 2.5rem;
+    /**/
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    right: 30px;
+}
+
+.photos-modal img {
+    border:1px solid var(--color);
+    max-width: 85vw;
+    max-height: 85vh;
+    position: absolute;
+    top:0;right:0;bottom:0;left:0;
+    margin:auto;
 }
 
 .photos-container {

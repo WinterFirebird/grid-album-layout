@@ -16,6 +16,21 @@ window.onload = function() {
     const photosContainer = document.querySelector(".photos-container");
 
     /**
+     * the modal for fullscreen view;
+     */
+    const photosModal = document.querySelector(".photos-modal");
+
+    /**
+     * the fulscreen view close button
+     */
+    const modalCloseButton = document.querySelector(".photos-modal > .close-button");
+
+    /**
+     * the image-wrapper of that modal;
+     */
+    const imageWrapper = document.querySelector(".photos-modal > .photos-modal-image-wrapper");
+
+    /**
      *  number of columns in the grid
      */
     const gridColumns = 4;
@@ -84,11 +99,36 @@ window.onload = function() {
         return gridLayout
     }
 
+    /**
+     * a function for opening the image in fullscreen
+     * estimates the source of the high-res version, dynamically creates a new image and append it to the modal, then displays it 
+     */
+    const goToFullscreen = (target) => {
+        /**store the predicted src of the high-res image from the src of the normal one*/
+        let highResSubstitute = `images/high-res/${target.getAttribute("src").substring(7)}`;
+
+        /**create the high-res image to display in fullscreen*/
+        let highResImg = document.createElement("img");
+        highResImg.src=highResSubstitute;
+
+        /*clear the imageWrapper (from previous images) and append the created high-res image to it*/
+        imageWrapper.innerHTML = "";
+        imageWrapper.appendChild(highResImg);
+
+        /*display the modal*/
+        photosModal.style.display = "";
+
+        /*attach an event handler for the close button*/
+        modalCloseButton.addEventListener("click", closeFullscreen)
+    }
 
 
-
-
-
+    /**
+     * simply closes the fullscreen modal by adding display:none
+     */
+    const closeFullscreen = () => {
+        photosModal.style.display = "none";
+    }
 
 
 
@@ -125,6 +165,9 @@ window.onload = function() {
                 this.parentElement.classList.remove("invisible");
                 createGridElements();
             });
+            /*an event on the image click, to open it in fullscreen.*/
+            img.addEventListener("click", function() {goToFullscreen(this)});
+            /**/
             img.src=`images/image${randomNum}.jpg`;
             imgWrapper.appendChild(img);
     
