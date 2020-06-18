@@ -1,0 +1,1 @@
+to change the fullscreen loading animation, simply replace the "loading.gif" with the new one

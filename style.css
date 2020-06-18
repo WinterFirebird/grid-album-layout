@@ -146,6 +146,11 @@ header a {
     border:1px solid var(--color);
 }
 
+.photos-modal img.loading-image {
+    width:25vmax;
+    max-width: 200px;
+}
+
 .photos-container {
     margin:var(--container-margin);
     color:var(--color);

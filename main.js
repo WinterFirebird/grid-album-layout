@@ -105,7 +105,7 @@ window.onload = function() {
      */
     const goToFullscreen = (target) => {
         /*add the loading*/
-        imageWrapper.innerHTML = "<img src='images/media/loading.gif' />";
+        imageWrapper.innerHTML = "<img src='images/media/loading.gif' class='loading-image'/>";
 
         /**store the predicted src of the high-res image from the src of the normal one*/
         let highResSubstitute = `images/high-res/${target.getAttribute("src").substring(7)}`;
