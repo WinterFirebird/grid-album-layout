@@ -2,12 +2,12 @@ window.onload = function() {
     /**
      * number of the generated images in the album
      */
-    const photosNumber = 50;
+    const photosNumber = 70;
 
     /**
      * number of image samples in the images folder
      */
-    const sampleNumbers = 30;
+    const sampleNumbers = 50;
 
     /**
      * the album container,
