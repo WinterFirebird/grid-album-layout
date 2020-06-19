@@ -184,7 +184,10 @@ window.onload = function() {
             funcExecTimes++;
         }
     }
-    
-    createGridElements();
 
+    /* run the function only if the container exists, to avoid errors and freezes on other pages, where it doesn't exist */
+    if(photosContainer) {
+        createGridElements();
+    }
+    
 }
