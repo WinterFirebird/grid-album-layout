@@ -5,8 +5,8 @@
 
 
 :root {
-    --background-gradient:linear-gradient(45deg, darkmagenta, darkorchid, darkslateblue);
-    --color:white;
+    --background:linear-gradient(45deg, darkmagenta, darkorchid, darkslateblue);
+    --default-color:white;
     --font-family:MavenPro, sans-serif;
     /**/
     --container-margin:80px;
@@ -20,16 +20,13 @@
 }
 
 html {
-    /* height:100vh; */
     margin:0; padding:0;
 }
 
 body {
-    /* height:100%; */
     margin:0;
     font-family:var(--font-family);
-    background-image:var(--background-gradient);
-    background-attachment: fixed;
+    background:var(--background) center/cover no-repeat fixed;
 }
 
 /* header*/
@@ -37,18 +34,18 @@ body {
 header {
     padding-left: var(--container-margin);
     padding-right: var(--container-margin);
-    color:var(--color);
+    color:var(--default-color);
 }
 
 header a {
-    color:var(--color);
+    color:var(--default-color);
 }
 
 /* album container */
 
 .album-container {
     margin:var(--container-margin);
-    color:var(--color);
+    color:var(--default-color);
     /**/
     display:grid;
     grid-gap:20px;
@@ -58,7 +55,7 @@ header a {
 }
 
 .album-container > .item {
-    color:var(--color);
+    color:var(--default-color);
     text-decoration: none;
     /**/
     background-color:rgba(240, 248, 255, 0.3);
@@ -110,19 +107,17 @@ header a {
 .photos-modal {
     background-color: rgba(0,0,0,0.9);
     /**/
+    display: none; /**/
     position: fixed;
     overflow:hidden;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* padding: 5% 20%;
-    background-origin: content-box;
-    background-clip: content-box; */
 }
 
 .photos-modal > .close-button {
-    color:var(--color);
+    color:var(--default-color);
     background:none;
     border:none;
     outline:none;
@@ -143,7 +138,7 @@ header a {
 }
 
 .photos-modal img.ready {
-    border:1px solid var(--color);
+    border:1px solid var(--default-color);
 }
 
 .photos-modal img.loading-image {
@@ -153,15 +148,13 @@ header a {
 
 .photos-container {
     margin:var(--container-margin);
-    color:var(--color);
+    color:var(--default-color);
     /**/
     display:grid;
     grid-gap:10px;
     grid-auto-flow:column dense;
     grid-template-rows: repeat(4, 15vh);
     grid-auto-columns: 15vh;
-    /* align-items:center;
-    justify-items:center; */ /* Causes problems with small images*/
     /**/
     overflow-x:scroll;
     overflow-y:hidden;/*unfortunately, horizontal scrollbar causes also a vertical one, which I can't solve the right way, so I just made it hiddden.
@@ -170,7 +163,7 @@ header a {
 }
 
 .photos-container > .item {
-    border:2px solid var(--color);
+    border:2px solid var(--default-color);
     cursor: zoom-in;
 }
 

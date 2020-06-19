@@ -31,13 +31,13 @@ window.onload = function() {
     const imageWrapper = document.querySelector(".photos-modal > .photos-modal-image-wrapper");
 
     /**
-     *  number of columns in the grid
+     *  number of columns in the grid (the number specified in the stylesheet)
      */
     const gridColumns = 4;
 
     /**
      * 
-     * number of rows in the grid
+     * number of rows in the grid (the number specified in the stylesheet)
      */
     const gridRows = 4;
 
@@ -122,7 +122,7 @@ window.onload = function() {
         highResImg.src=highResSubstitute;
 
         /*display the modal*/
-        photosModal.style.display = "";
+        photosModal.style.display = "block";
 
         /*attach an event handler for the close button*/
         modalCloseButton.addEventListener("click", closeFullscreen)
