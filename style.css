@@ -38,7 +38,11 @@ header {
 }
 
 header a {
-    color:var(--default-color);
+    color:inherit;
+}
+
+header h1 a {
+    text-decoration: none;
 }
 
 /* album container */
